@@ -1,4 +1,8 @@
 import math
+#import cv2 as cv
+import msvcrt
+from string import ascii_lowercase
+import threading
 
 #Ejercicio pag 55
 
@@ -626,19 +630,19 @@ print(C)'''
 
 #Escriba un programa en Python que acepte una lista y elimine sus elementos duplicados.
 
-'''# Llenamos la lista mediante un bucle for, paramos el bucle con la palabra "fin"
-lista_duplicada = []
+# Llenamos la lista mediante un bucle for, paramos el bucle con la palabra "fin"
+'''lista_duplicada = ['hola', 'mañana', 'tarde', 'nelson', 'refri', 'mañana', 'hola', 'tu', 'el', 'tarde', 'el']
 vec = 0
-for i in range(1, 15):
-    if vec == 'fin':
-        break
-    vec = str(input(f'Ingrese el elemento no. {i} de la lista, procure repetir alguno de ellos (Digite \"fin\" para indicar el final de su lista).'))
-    lista_duplicada.append(vec)
+#for i in range(1, 15):
+ #   if vec == 'fin':
+  #      break
+   # vec = str(input(f'Ingrese el elemento no. {i} de la lista, procure repetir alguno de ellos (Digite \"fin\" para indicar el final de su lista).'))
+    #lista_duplicada.append(vec)
 print(lista_duplicada)
                   
 for i in range(len(lista_duplicada) - 1):
-    if i == len(lista_duplicada) - 1:
-                break
+    if i == (len(lista_duplicada) - 1):
+        break
     menor = i
     for j in range((i + 1), len(lista_duplicada)):
         if lista_duplicada[j] == lista_duplicada[menor]:
@@ -772,7 +776,11 @@ print(dick['Pala'])'''
 '''dick = {'Pala':'Aquel de prominente miembro viril',
         'Carlos':'Super Albañil',
         'Colal':'Fauna marina',
-        'Toñity':'Pendejo'}
+        'Toñity':'Pendejo',
+        'Neto':'Chiquito'
+        'Yair':'Enfermo',
+        'Javi':'Buen hombre'
+        'Cochas':'Mamalon'}
 dick['Carlos'] = 'Buen hombre'
 dick['Javi'] = 'Inge fit'''
 
@@ -786,11 +794,1347 @@ for i, numero in enumerate(numeros):
 #EJERCICIO PAG 162 Usando un diccionario, cuente el número de veces que se repite\
 #cada letra en una cadena de texto dada.
 
-given_string = str(input('Escriba una palabra y se determiara el numero de veces que se repite cada letra'))
-repeated_lettersDic = {}
+'''given_string = str(input('Escriba una palabra y se determiara el numero de veces que se repite cada letra'))
+repeated_lettersDicc = {}
 
-for i in given_string:
+for no_letra in given_string:
+    first_stringCount = given_string.count(no_letra)
+    repeated_lettersDicc[no_letra] = first_stringCount
+print(repeated_lettersDicc)'''
+
+#Obtencion de todas las claves de un diccionario
+
+'''dick = {'Pala':'Aquel de prominente miembro viril',
+        'Carlos':'Super Albañil',
+        'Colal':'Fauna marina',
+        'Toñity':'Pendejo',
+        'Neto':'Chiquito',
+        'Yair':'Enfermo',
+        'Javi':'Buen hombre',
+        'Cochas':'Mamalon'}
+print(dick.keys())'''
+
+#Obtencion de todos los valores de un diccionario
+
+'''dick = {'Pala':'Aquel de prominente miembro viril',
+        'Carlos':'Super Albañil',
+        'Colal':'Fauna marina',
+        'Toñity':'Pendejo',
+        'Neto':'Chiquito',
+        'Yair':'Enfermo',
+        'Javi':'Buen hombre',
+        'Cochas':'Mamalon'}
+print(dick.values())'''
+
+#Obtencion de todos los pares clave-valor de un diccionario
+
+'''dick = {'Pala':'Aquel de prominente miembro viril',
+        'Carlos':'Super Albañil',
+        'Colal':'Fauna marina',
+        'Toñity':'Pendejo',
+        'Neto':'Chiquito',
+        'Yair':'Enfermo',
+        'Javi':'Buen hombre',
+        'Cochas':'Mamalon'}
+print(dick.items())'''
+
+#Longitud de un diccionario (clave-valor)
+
+'''dick = {'Pala':'Aquel de prominente miembro viril',
+        'Carlos':'Super Albañil',
+        'Colal':'Fauna marina',
+        'Toñity':'Pendejo',
+        'Neto':'Chiquito',
+        'Yair':'Enfermo',
+        'Javi':'Buen hombre',
+        'Cochas':'Mamalon'}
+print(len(dick))'''
+
+#EJERCICIO PAG 164 Dado el diccionario de ciudades y poblaciones ya visto, y suponiendo que estas ciudades son
+#las únicas que existen en el planeta, calcule el porcentaje de población relativo de cada una
+#de ellas con respecto al total
+
+'''citiesPop = dict(Tokyo = 38_140_0000, Delhi = 26_454_000,\
+             Shanghai = 24_484_000, Mumbai = 21_357_000, São_Paulo = 21_297_000
+)
+superficies = (2,194, 1,483, 6,340, 603.4, 1,521)
+
+for superficie in superficies:
+    for key, value in citiesPop.items():      #Iteramos sobre el diccioanrio 'citiesPop'
+        densidad = value / superficie         #Le asignamos una variable al valor de la densidad
+        citiesPop[key] = densidad
+print(citiesPop)'''
+
+#Combinar diccionarios
+
+'''citiesPop = dict(Tokyo = 38_140_0000, Delhi = 26_454_000,\
+             Shanghai = 24_484_000, Mumbai = 21_357_000, São_Paulo = 21_297_000
+)
+dick = {'Pala':'Aquel de prominente miembro viril',
+        'Carlos':'Super Albañil',
+        'Colal':'Fauna marina',
+        'Toñity':'Pendejo',
+        'Neto':'Chiquito',
+        'Yair':'Enfermo',
+        'Javi':'Buen hombre',
+        'Cochas':'Mamalon'}
+print(f'{citiesPop | dick}\n\n')            #Con el operador '|' combinamos los diccionarios sin modificar el orginal(crea uno nuevo)
+citiesPop.update(dick)                      #Con la funcion 'update()' combinamos los diccionarios modificando los originales
+print(citiesPop)'''
+
+#Tipos de borrado de diccionarios
+
+'''dick = {'Pala':'Aquel de prominente miembro viril',
+        'Carlos':'Super Albañil',
+        'Colal':'Fauna marina',
+        'Toñity':'Pendejo',
+        'Neto':'Chiquito',
+        'Yair':'Enfermo',
+        'Javi':'Buen hombre',
+        'Cochas':'Mamalon'}
+del(dick['Neto'])                           #Borrando con la funcion 'del()'
+carlos = dick.pop('Carlos')                 #Borrando con la funcion 'pop()' que regresa la clave borrada como un parametro
+#dick.clear()                               #Borrando todo el diccionario con la funcion 'clear()'
+dick = {}'''
+
+#Haciendo copias 'duras' de un diccionario
+
+'''dick = {'Pala':'Aquel de prominente miembro viril',
+        'Carlos':'Super Albañil',
+        'Colal':'Fauna marina',
+        'Toñity':'Pendejo',
+        'Neto':'Chiquito',
+        'Yair':'Enfermo',
+        'Javi':'Buen hombre',
+        'Cochas':'Mamalon'}
+copy_dick = dick.copy()                 #La funcion 'copy()' hace una copia inmutable de la lista original, en este
+dick['Javi'] = 'Bad men'                #caso se guardo en 'copy_dick' y al modificar la lista original la copia se mantiene
+                                        #sin cambios'''
+
+#Diccionarios por comprension
+
+'''dic = {i : chr(65+i) for i in range(4)}'''
+
+#Hash
+
+'''hashable = hash('dog')'''   #La funcion 'hash()' genera un numero hash por defecto que siempre sera diferente de acuerdo a los
+                         #atributos del objeto
+
+
+#EJERCICIOS DE REPASO PAG 170
+#1. Escriba un programa en Python que acepte una lista de palabras y las agrupe por su letra inicial usando un diccionario
+
+'''array = []       #Array vacio
+dictionary = {}     #Diccionario vacio
+cont = 0            #Contador
+fill_word = 0
+#a = 0
+print('A continuacion llenara una lista con diferentes palabras y el programa las organizara alfabeticamente en un diccionario, digite \'fin\' cuando \
+haya terminado.\t')
+
+while True:
+    cont += 1                                                 # Aumenta el contador cada ciclo while
+    fill_word = (input(f'Introduzca la palabra no. {cont} ')) # Pedimos al usuario que llene una lista
+    if fill_word == 'fin':                                    # Si el usuario escribe \'fin\' terminara el ciclo while
+        break
+    array.append(fill_word)                                   # Usamos \'append()\' para insertar \'fill_word\' en la lista
+    sorted_array = sorted(array) #Ordenamos la lista creada con sorted()
+
+alfa = list(ascii_lowercase) #'ascii_lowercase' se usa porque incluye caracteres interpretados como alfabeto, los convertiremos en una lista con list()
+
+for letter in alfa:          # Iteramos sobre el alfabeto
+    for word in array:   # Anidamos otro \'for\' para iterar sobre 'array'. 
+        first = word[0]  # Guardamos la primer letra de 'word' 
+        if letter == first:               # Si la primer letra de 'word' es igual a 'letter' (letras del alfabeto) entonces...
+            if first not in dictionary:   # Anidamos un 'if', si la primer letra de 'word' no existe en las claves del diccionario entonces... 
+                dictionary[first] = []    # Creamos la clave 'first' y el valor ira en una lista
+                a = dictionary[first]     # Guardamos la clave y la lista creadas en el diccionario en la variable 'a'
+            a.append(word)                # Por ultimo insertamos 'word' dentro de la lista 'a'.
+print(f'\n{dictionary}')'''
+
+
+'''lista = []
+diccionario = {}
+contador = 0
+#elemento_lista = 0
+
+print('A continuacion ingresara palabras una por una hasta llenar una lista, escriba \'fin\' cuando haya terminado. ')
+
+while True:
+    contador += 1
+    palabra = input(f'\nEscriba la palabra numero {contador} de la lista: ')
+    if palabra == 'fin':
+        break
+    else:
+        lista.append(palabra)
+        lista_oredenada = sorted(lista)
+
+alfabeto = list(ascii_lowercase)
+
+for letra in alfabeto:
+    for elemento_lista in lista:
+        elemento = elemento_lista[0]
+        if letra == elemento:
+            if elemento not in diccionario:
+                diccionario[elemento] = []
+                agregar = diccionario[elemento]
+            agregar.append(elemento_lista)
+
+print(diccionario)'''
     
-    first_stringCount = given_string.count(i)
-    for j in range(given_string):
-        repeated_lettersDic[j] = first_stringCount
+
+#2. Escriba un programa en Python que acepte un diccionario y determine si todos los valores son iguales o no.
+            
+'''dictionary = {}
+count = 0
+count_1 = 0
+print('A continuacion llenara un diccionario con sus respectivas claves y valores. Se determinara si todos los valores son iguales.\
+Si gusta terminar escriba \'fin\'.\n')
+
+while True:
+    count += 1
+    key_word = input(f'Introduzca clave no. {count} ')
+    if key_word == 'fin':
+        break
+    value_word = input(f'Introduzca el valor no. {count} ')
+    dictionary[key_word] = value_word
+
+for value in dictionary.values():
+    count_1 += 1
+    if count_1 == 1:
+        break
+dictionary_values = dictionary.values()
+dictionary_values_list = list(dictionary_values)
+if dictionary_values_list.count(value) == len(dictionary):
+    print('Same values')
+else:
+    print('Diferent values')'''
+
+
+#Version de practica y eficientizada
+'''diccionario = {} 
+contador = 0
+
+print('A continuacion llenara un diccionario con sus respectivas palabras y definiciones, si desea terminar el llenado escriba \'fin\'.')
+
+while True:
+    contador += 1
+    claves = input(f'Escriba la clave numero {contador}. ')
+    if claves == 'fin':
+        break
+    valores = input(f'Escriba el valor numero {contador}. ')
+    diccionario[claves] = valores
+
+lista = list(diccionario.values())
+if lista.count(lista[0]) == len(lista):
+    print('Todos los valores son iguales')
+else:
+    print('No todos los valores son iguales')'''
+
+
+#3. Escriba un programa en Python que acepte una lista de listas con varios elementos y obtenga un diccionario donde las claves serán los primeros
+#elementos de las sublistas y los valores serán los restantes – como listas
+
+'''array_ofArrays = [['Episode IV - A New Hope','May 25', 1977], ['Episode V - The Empire Strikes Back', 'May 21', 1980], ['Episode VI - Return of the \
+Jedi', 'May 25', 1983]]
+dictionary = {}
+temp = 0
+print(f'{array_ofArrays}\n')
+
+for array in array_ofArrays:
+    string = array[0]
+    dictionary[string] = []
+    a = dictionary[string]
+    array.remove(string)
+    for string_2 in array:
+        a.append(string_2)
+print(dictionary)'''
+
+# 4. Escriba un programa en Python que acepte un diccionario cuyos valores son listas y borre el contenido de dichas listas
+
+#5. Escriba un programa en Python que acepte un diccionario y elimine los espacios de
+#sus claves respetando los valores correspondientes
+        
+'''empty_dict = {}
+noTab_dict = {}
+key_count = 0
+value_count = 0
+
+while True:
+    key_count += 1
+    key = input(f'Escriba la clave no. {key_count}. Escriba\'fin\' para terminar. ')
+    if key == 'fin':
+        break
+    empty_dict[key] = []
+    a = empty_dict[key]
+    while True:
+        value_count += 1
+        value = input(f'Escriba el valor no. {value_count}. Escriba \'fin\' para terminar. ')
+        if value == 'fin':
+            value_count = 0 
+            break
+        a.append(value)
+print(f'\nSe muestra el Diccionario llenado por el usuario. \n{empty_dict}')
+
+for dict_key, dict_value  in empty_dict.items():
+    noTab_dictKey = dict_key.replace(' ', '')
+    dict_key = noTab_dictKey
+    noTab_dict[dict_key] = dict_value
+print(f'\nSe muestra el diccionario sin espacios en las \'claves\'. \n{noTab_dict}')
+
+for dict_key, dict_value  in noTab_dict.items():
+    noTab_dict[dict_key] = []
+print(f'\nSe muestra el diccionario sin espacios en las \'claves\' y con borrado de \'valores\'. \n{noTab_dict}')'''
+
+# Dada una tupla de duplas (2 valores), cree dos conjuntos:
+#• Uno de ellos con los primeros valores de cada dupla.
+#• El otro con los segundos valores de cada dupla.
+
+'''tup = ((1, 7), (2, 4), (5, 7), (1, 10))   # Definimos la tupla de tuplas.
+array_0 = []                              # Creamos un par de arrays vacios el primero para los primeros valores de la sub-tupla.
+array_1 = []
+first_value = 0
+second_value = 0
+ 
+for sub_tup in tup:                       # Iteramos sobre la tupla.
+    sub_tup_list = list(sub_tup)          # Convertimos sub_tup en una lista... ('a', 'b') into ['a', 'b']
+    first_value = sub_tup_list[0]         # Tomamos el primer valor de la sub-tupla y lo igualamos a una variable 'first_value'.
+    array_0.append(first_value)           # Añadimos la variable 'first_value' al final del array de primeros valores.
+    second_value = sub_tup_list[1]        # Tomamos el segundo valor de la sub-tupla y lo igualamos a una variable 'second_value'.
+    array_1.append(second_value)          # Añadimos la variable 'second_value' al final del array de segundos valores.
+
+print(tup)
+
+set_0 = set(array_0)                      # Convertimos los arrays en 'sets' (conjuntos) y los imprimimos
+print(set_0)
+set_1 = set(array_1)
+print(set_1)'''
+
+
+# Teoria de conjuntos (Diagramas de Venn y Teoria de conjuntos)
+
+'''A = {1, 2}
+B = {2, 3}
+
+# Interseccion (Elementos que estan a la vez en A y en B:
+print(A & B)               # {2}
+print(A.intersection(B))   # {2}
+# Union (Elementos que estan tanto en A como en B):
+print(A | B)               # {1, 2, 3}
+print(A.union(B))          # {1, 2, 3}
+# Diferencia (Elementos que estan en A y no estan en B):
+print(A - B)               # {1}
+print(A.difference(B))     # {1}
+# Diferencia simetrica (Elementos que estan en A o en B pero no en ambos conjuntos):
+print(A ^ B)                       # {1, 3} 
+print(A.symmetric_difference(B))   # {1, 3}''' 
+
+
+# Dadas dos cadenas de texto, obtenga una nueva cadena de texto con las letras consonantes que se repiten en ambas frases. Ignore los espacios 
+# en blanco y muestre la cadena de salida con sus letras ordenadas. Resuelva el ejercicio mediante dos aproximaciones: Una de ellas usando conjuntos por
+# comprensión y otra sin usar comprensiones.
+
+'''string_0 = 'Flat is better than nested '
+string_1 = 'Readability counts'
+vowels = ['a', 'e', 'i', 'o', 'u']
+
+# Usando comprensiones
+noTab_string_0 = string_0.replace(' ', '')
+noTab_string_1 = string_1.replace(' ', '')
+consonant_set = {consonant for consonant in noTab_string_0 if consonant not in vowels and consonant in noTab_string_1}
+consonant_list = list(consonant_set)
+consonant_list.sort()
+final_string = ''.join(consonant_list)
+print(final_string)'''
+
+
+#Version 2.0
+
+'''string_0 = 'Flat is better than nested'
+string_1 = 'Readability counts'
+vocales = ['a', 'e', 'i', 'o', 'u']
+#Quitando espacios a las cadenas de texto.
+noTab_string_0 = string_0.replace(' ', '')
+noTab_string_1 = string_1.replace(' ', '')
+#Convirtendo str a set 'conjuntos'.
+noTab_string_0 = set(noTab_string_0)
+noTab_string_1 = set(noTab_string_1)
+
+string_2 = (noTab_string_0 & noTab_string_1)
+string_3 = {consonantes for consonantes in string_2 if consonantes not in vocales}
+string_3_list = list(string_3)
+string_3_list.sort()
+final_string = ''.join(string_3_list)
+print(final_string)'''
+
+
+# Dado el fichero temperatures.txt con 12 filas (meses) y 31 columnas (temperaturas de cada día), se pide:
+#1. Leer el fichero de datos.
+#2. Calcular la temperatura media de cada mes.
+#3. Escribir un fichero de salida avgtemps.txt con 12 filas (meses) y la temperatura media de cada mes.
+
+'''#1
+f = open('temperatures.txt')
+#2
+new_array  = []
+integersArray = []
+months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'Decebember']
+avrgtemps = []
+
+for line in f:                  #Iteramos sobre el fichero fila por fila.
+    line_0 = line[11:]          #Tomamos a partir del 11vo caracter de 'line' que es donde comienzan las temps de cada dia del mes.
+    array = line_0.split()      #Separamos cada numero con la funcion 'split()' y se guarda en un array automaticamnete.
+    
+    for number in array:        # Iteramos sobre array string por string.
+        if len(integersArray) == len(array):     
+            integersArray = []               #Si 'integersArray' iguala el tamaño de array reiniciamos 'integersArray'.
+        integer = int(number)                #convertimos a integer cada string del array 'array'.
+        integersArray.append(integer)        #Lo colocamos en 'integersArray'.
+        if len(integersArray) == len(array): #Si 'integersArray' iguala el tamaño de array colocamos 'integersArray' en el array principal.
+            new_array.append(integersArray)  #Aqui todas las temps del mes son integers en un array de arrays.
+
+print('AVERAGE TEMPERATURE IN A MONTH\n')
+for temps_array, month in zip(range(1, len(new_array)), months):#Iteramos sobre el array principal 'new_array' (en este caso comenzamos en la segunda 
+                                                                 #fila, puesto que la primera no contiene temps) y el array de meses 'months'
+    calendar_sum = sum(new_array[temps_array])    #En linea 1127 y 1128 sacamos el promedio de temp de cada subarray.
+    average = calendar_sum/31
+    avrgtemps.append(average)
+    print(month, '  ', average)
+print('\n')
+#3
+with open('temperatures_new.txt', 'w') as f:      #Usamos contextos (with) para que el fichero se cierre cuando terminemos de escribir, usamos 'w'.
+    f.write('AVERAGE TEMPERATURE IN A MONTH\n\n')
+    for temp, month in zip(avrgtemps, months):    #Iteramos sobre 'avrgtemps' y 'months' para unir meses y temps en un nuevo fichero. 
+        f.write(month + '   ')                    #Escribimos un mes y agregamos espacios.
+        str_temp = str(temp)                      #Convertimos las temps que estan en 'int' a 'str'.
+        f.write(str_temp + '\n')                  #Las escribimos en seguida de los meses en una misma iteracion del bucle for.
+                                                  #Se cierra el fichero
+f = open('temperatures.txt')
+print(f.read())'''
+
+
+
+#*********************************************************Version 2.0******************************************************+
+
+'''#Abrimos el fichero en modo lectura 
+with open('temperatures.txt') as f:
+
+    strArray = []
+    integers_array = []
+    integers_array_ofArrays = []
+    months = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER']
+#Tomamos linea por linea del fichero, la convertimos en un array y lo guardamos en un array de arrays de strings
+    for line in f:
+        line_0 = line[11:].split()
+        strArray.append(line_0)
+    del(strArray[0])
+#iteramos sobre el array de arrays para convertirlos en arrays de integers. 
+    for strLine in strArray:
+        for string in strLine:
+            integer = int(string)
+            integers_array.append(integer)
+            if len(integers_array) == len(strLine):
+                integers_array_ofArrays.append(integers_array)
+                integers_array = []
+#Abrimos un nuevo fichero en modo 'write' y con contextos, 
+with open('Average Temperatures in a Month', 'w') as temps:
+#Iteramos sobre los meses del año y sobre los arrays de integers para obtener el promedio de temperatura de cada uno y agregarlo al fichero.
+    temps.write('AVERAGE TEMPERATURE IN A MONTH\n\n')
+    for array, month in zip(integers_array_ofArrays, months):
+        add = sum(array)
+        average_temp = add / len(array)
+        average_temp = str(average_temp)
+        temps.write(month + '   ')
+        temps.write(average_temp + '\n')
+       
+with open('Average Temperatures in a Month') as temps:
+    print(temps.read())'''
+
+
+
+#PAG 188
+#Funciones
+
+#Llamar una funcion
+'''def say_hello():
+    print('¡Hello!')
+say_hello()'''
+
+#Retornar un valor
+'''def one():
+    x = 1
+    return 1
+
+#Con condicionales
+if one() == 1:
+    print('¡It works!')
+else:
+    print('Something is broken')'''
+
+#Funcion con parametros
+'''def sqrt(value):
+    return value ** (1 / 2)'''
+
+#Funcion con dos parametros
+'''def _men(a, b):
+    if a < b:
+        return a
+    else:
+        return b'''
+
+#Ejercicio PAG 194.
+#Escriba una función en Python que reproduzca lo siguiente: 𝑓(𝑥, 𝑦) = 𝑥2 + 𝑦2
+
+'''def sqrtSum(x, y):
+    fun = (x ** 2) + (y ** 2)
+    return fun'''
+
+#Argumentos posicionales y nominales
+'''def position(club, position, skill, height, age):     #Coloco los parametros en un orden pedeterminado. 
+    return dict(club = club, position = position, skill = skill, height = height, age = age) #Igualo el parametro a su argumento.'''
+
+#Parametros por defecto (Se asigna un argumento por defecto al declarar la funcion, y si no proporcionan un valor diferente al argumento en el llamado
+# de la funcion se usara el proporcionado antes.
+'''def kitchen(protein, vitamin, fat, carbs = 'rice', hidratation = 'water'):
+    
+    return dict(protein = protein, vitamin = vitamin, carbs = carbs, hidratation = hidratation, fat = fat)'''
+
+#Escriba una función factorial que reciba un único parámetro n y devuelva su factorial.
+
+'''def fact(n):
+    factorial = 1
+    while n > 0:
+        factorial = (factorial * n)
+        n -= 1
+    return factorial'''
+
+#Modificando parametros mutables.
+'''def buggy(arg, result = []):
+    result.append(arg)
+    print(result)'''
+
+#Empaquetar/desempaquetar argumentos, argumentos posicionales.
+'''def test_args(*args):
+    print(f'{args = }')'''
+
+#Con parametros requeridos y opcionales.
+'''def sum_all(v1, v2, *args):
+    total = 0
+    for value in (v1, v2) + args:
+        total = total + value
+    return total'''
+
+#Desempaquetado.
+'''def test_args(*args): #se usa el asterisco para declarar los argumentos y para llamar a la funcion (test_args(*my_args)).
+    return args 
+my_args = (4, 5, 6, 7, 8)'''
+
+#Empaquetar/Desempaquetar argumentos nominales.
+'''def kwargs(**kwargs):
+    return kwargs'''
+
+#Desempaquetado.
+'''def kwargs(**kwargs):
+    return kwargs
+my_kwargs = {'Mega':2, '2':'Two', 'Three':3}'''
+
+#Forzando modo de paso de argumentos.Ambos metodos pueden combinarse(sum_power(a, b, /, *, power = True) Asi solo hay un modo de llamarla. 
+
+#Argumentos solo posicionales /
+
+'''def sum_power(a, b, /, power = False):  #La barra slash separa los argumentos posicionales forzosos(izquierda) y los nominales opcionales(derecha).
+    if power is True:                   #Si power es True se ejecuta el if, de lo contrario solo se suma a + b en el valor de retorno.
+        a = a ** 2
+        b = b ** 2
+    return a + b'''
+
+#Argumentos solo nominales *
+
+'''def sum_power(a, b, *, power = False):  #El asterisco separa los argumentos posicionales opcionales(izquierda) y los nominales forzosos(derecha).
+    if power is True:                   #Si power es True se ejecuta el if, de lo contrario solo se suma a + b en el valor de retorno.
+        a = a ** 2
+        b = b ** 2
+    return a + b'''
+    
+#Funciones como parametros
+'''def succes():
+    print('Yeah!')
+def doit(f):
+    f()'''
+
+'''def drink_tea(a, b, c = 'en la noche'):
+    add = a + b + c
+    return add
+def args(f, a, b, c = 'en la noche'):
+    return f(a, b, c)'''
+
+#Anotacion de tipos. Es solo una anotacion de tipo, se puede usar otro tipo diferente ya que solo es indicativo. 
+'''def ssplit(text: str, split_pos: int, ) -> tuple: #Escribimos los argumentos seguidos de ':' y el tipo de dato. 
+    return text[:split_pos], text[split_pos:]     #Tomamos de string 'texto' del comienzo hasta 'split_pos' y de 'split_pos' hasta el final.'''
+
+#Tipos de funciones.
+
+#Funciones interiores
+'''def validation_test(text): 
+    def is_valid_char(char):     #Al llamar a 'validation_test' ejecutamos 'is_valid_char' automaticamente.
+        return char in 'abc'     #Al ejecutarse 'is_valid_char' retornamos un dato tipo 'bool'.
+    checklist = []               #Volvemos a 'validation_test' y creamos una lista vacia 'checklist'. 
+    for char in text:            #Iteramos sobre text.
+        print(char)
+        checklist.append(is_valid_char(char))  #Agregamos el 'bool' que genera 'is_valid_char(char))' a la lista creada (Lista de bools).
+        print(is_valid_char(char))             
+        print(checklist)
+    return sum(checklist) / len(text) '''         #Retornamos el promedio de 'Trues' dentro de la lista.
+
+#Clausuras.
+'''def make_multiplier_of(n):
+    def multiplier(x):
+        return x * n
+    return multiplier'''
+
+
+#Funciones anonimas 'lambda' (funciones por comprension).
+
+#Una función lambda tiene las siguientes propiedades:
+#1. Se escribe con una única sentencia.
+#2. No tiene nombre (anónima).
+#3. Su cuerpo tiene implícito un return.
+#4. Puede recibir cualquier número de parámetros.
+  
+
+'''num_words = lambda t: len(t.strip().split())'''
+
+'''duna = lambda a, b: (a * b) ** 2'''
+
+#********************************************************************************************************************************************
+'''logic_and = lambda x, y: x ^ y
+
+for i in range(4):
+    for j in range(4):
+        print(f'{i} & {j} = {logic_and(i, j)}')'''
+    
+
+#Las funciones «lambda» son bastante utilizadas como argumentos a otras funciones. Un
+#ejemplo claro de ello es la función sorted que tiene un parámetro opcional key donde se
+#define la clave de ordenación.
+#Veamos cómo usar una función anónima «lambda» para ordenar una tupla de pares
+#longitud-latitud:
+
+
+'''geoloc = ((15.623037, 13.258358, 19.3493476),
+(55.147488, -2.667338, -698.2834623),
+(54.572062, -73.285171, 1.2408),
+(3.152857, 115.327724, 34.88488329430934),
+(-40.454262, 172.318877, -22.4945))
+
+# Ordenación por longitud (primer elemento de la tupla)
+lenght_sorted = sorted(geoloc)
+
+# Ordenación por latitud (segundo elemento de la tupla)
+
+latitud_sorted = sorted(geoloc, key = lambda t: t[2])'''
+
+
+
+#Enfoque funcional
+
+#Como se comento en la introduccion, python es un lenguaje de programacion multiparadigma. Uno de los paradigmas menos explotados en este lenguaje es
+# la 'programacion funcional'.
+
+#Python nos ofrece 3 funciones que encajan verdaderamnete bien en este enfoque: map(), filter() y reduce().
+
+
+#map()
+#Esta funcion aplica otra funcion sobre cada elemento de un iterable. Supongamos que queremos aplicar la siguiente funcion.
+
+#f(x) = x ^ 2 / 2 -- [1, 10]
+
+'''def f(x):
+    return x ** 2 / 2
+
+data = range(1, 5)
+map_gen = map(f, data)
+list_map_gen = list(map_gen)
+print(list_map_gen)'''
+
+#Usando una funcion anonima lambda
+
+'''data = range(1, 5)
+list_map = list(map(lambda x: x ** 2 / 2, data))
+print(list_map)'''
+
+
+#Filter
+#Esta función selecciona aquellos elementos de un iterable que cumplan una determinada condición. Supongamos que queremos seleccionar sólo aquellos
+#números impares dentro de un rango:
+
+'''def odd_numbers(x):
+    return x % 2 == 1
+
+data = range(1, 21)
+filter_gen = filter(odd_numbers, data)
+list_filter_gen = list(filter_gen)
+print(list_filter_gen)'''
+
+#Aplicando una funcion anonima lambda
+
+'''data = range(1, 21)
+list_filter = list(filter(lambda x: x % 2 == 1, data))
+print(list_filter)'''
+
+#reduce
+#Para poder usar esta función debemos usar el módulo functools. Nos permite aplicar una función dada sobre todos los elementos de un iterable de
+#manera acumulativa. O dicho en otras palabras, nos permite reducir una función sobre un conjunto de valores. Supongamos que queremos realizar el
+#producto de una serie de valores aplicando este enfoque:
+
+'''from functools import reduce'''
+
+'''def mult_values(a, b):
+    return a * b
+
+data = range(1, 6)
+
+print(reduce(mult_values, data))'''
+
+#Aplicando una funcion anonima lambda
+
+'''data = range(1, 6)
+
+print(reduce(lambda a, b: a * b, data))'''
+
+#Generadores
+
+#Un generador es un objeto que nos permite iterar sobre una secuencia de valores con la particularidad de no tener que crear explícitamente dicha
+#secuencia. Esta propiedad los hace idóneos para situaciones en las que el tamaño de las secuencias podría tener un impacto negativo en el consumo de
+#memoria. De hecho ya hemos visto algunos generadores y los hemos usado de forma directa. Un ejemplo es range() que ofrece la posibilidad de crear
+#secuencias de números. Básicamente existen dos implementaciones de generadores:
+#• Funciones generadoras.
+#• Expresiones generadoras.
+
+#Funciones generadoras
+
+#Las funciones generadoras se escriben como funciones ordinarias con el matiz de incorporar la sentencia yield que sustituye, de alguna manera, a
+#return. Esta sentencia devuelve el valor indicado y, a la vez, «congela» el estado de la función para subsiguientes ejecuciones.
+#Veamos un ejemplo en el que escribimos una función generadora de números pares:
+
+'''def evens (lim):
+    for i in range(0, lim + 1, 2):
+        yield i
+evens_gen = evens(20) #Regresa generador
+
+#Una vez creado ya podemos iterar sobre el
+
+for i in evens_gen:
+    print(i, end = ' ')
+
+print(list(evens(20)))'''
+
+
+#Expresiones generadoras
+
+#Una expresión generadora es sintácticamente muy similar a una lista por comprensión, pero utilizamos paréntesis en vez de corchetes. Se podría ver
+#como una versión acortadade una función generadora.
+
+
+'''evens_gen = (i for i in range(0, 20, 2))
+
+for j in evens_gen:
+    print(j, end = ' ')'''
+
+
+#***********************************************************EJERCICO PAG 217*****************************************************************************
+
+#Escriba una función generadora que devuelva los 100 primeros números enteros elevados al cuadrado.
+
+
+'''def sqr_num (integer):
+    for i in range(1, integer, 1):
+        sqr = i ** 2
+        yield sqr
+
+sqr_gen = sqr_num(100)  #Regresa un generador
+
+for i in sqr_gen:
+    print(i, end = ' ')'''
+
+    
+          
+#Escriba un decorador llamado fabs() que convierta a su valor absoluto los dos primeros parámetros de la función que decora y devuelva el resultado
+#de aplicar dicha función a sus dos argumentos. El valor absoluto de un número se obtiene con la función abs().
+#A continuación probar el decorador con una función fprod() que devuelva el producto de dos valores, jugando con números negativos y positivos.
+
+#Definimos el primer decorador llaamado 'fabs()'
+def fabs(func):                                      #Le pasamos un argumento func, que sera la funcion 'abs_values' en este caso la funcion decorada                 
+    def abs_val(*args, **kwargs):                    #La funcion interior del decorador es la que ejecuta los cambios a la funcion decorada.
+                                                     #Sus argumentos son en cantidad variable en una tupla(*args) y en un dict(**kwargs)
+        abs_array = []                               #Creamos una lista vacia
+        for i in args:                               #Iteramos sobre args, que es la tupla donde se almacenan los argumentos pasados por fabs() y
+                                                     #antes por abs_values()
+            abs_fabs = abs(i)                        #Obtenemos valores absolutos de cada iteracion
+            abs_array.append(abs_fabs)               #Agregamos a la lista 'abs_array'
+            
+        print(f'El valor absoluto es: {abs_array}')
+        return abs_array                             #Regresamos la lista de valores absolutos       
+    return abs_val                                   #Regresamos la funcion interior
+    
+def fprod(func):
+    def prod_val(*args, **kwargs):
+        taking_func = func(*args, **kwargs)
+        product = math.prod(taking_func)
+        return print(f'El producto de los valores absolutos es: {product}')
+    return prod_val
+
+@fprod        
+@fabs                                                #Los decoradores se ejecutan en orden de cercania a la funcion decorada
+def abs_values(*args, **kwargs):                     #funcion decorada
+    return args, kwargs
+
+
+
+#Funciones Recursivas
+
+'''def fibonacci(n):
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    print(n)
+    return fibonacci(n - 1) + fibonacci(n - 2)'''
+
+
+#Escriba una función recursiva que calcule el factorial de un número: 𝑛! = 𝑛 · (𝑛 − 1) · (𝑛 − 2) · . . . · 1
+
+
+'''def factorial(n):
+    if n == 0 or n == 1:   #Los factoriales de 0 y 1 son 1, por lo tanto se establece una condicional.
+        return 1
+    while n > 1:           #Mientras n > 1 se ejecuta la formula que se hara recursiva 
+        return n * factorial(n - 1)#El factorial de n - 1 se conoce hasta que n - 1 = n == 1, entonces se ejecuta la funcion recursiva hasta encontrarlo
+                                   #para multiplicarlo por n en cada ejecucion de la funcion.'''
+
+
+
+#Acceso a variables globales
+
+'''language = 'English'
+
+def England():
+    print(f'{language = }')'''
+    
+
+#Creando variables locales
+
+'''language = 'english'
+
+def england():
+    language = 'español'
+    print(f'{language = }')'''
+
+
+#EJERCICIOS DE REPASO PAG 226
+
+#1.Escriba una función en Python que indique si un número está en un determinado intervalo Entrada: valor=3; lim_inferior=2; lim_superior=5 Salida: True
+
+'''def interval(*, value: int = 3, lim_down: int = 2, lim_up: int = 5):
+    if value in range(lim_down, lim_up):
+        return True
+    else:
+        return False'''
+        
+#Version 2.0
+'''interval = lambda val = 3, lim_up = 5, lim_dw = 2: True if val in range(lim_dw, lim_up) else False'''
+
+
+#2. Escriba una función en Python que reciba una lista de valores enteros y devuelva otra lista sólo con aquellos valores pares.
+
+'''def parValue(*args: int) -> tuple:
+    array = []
+    for i in args:
+        if i % 2 == 0:
+            array.append(i)
+    return array'''
+
+#3. Escriba una función en Python que indique si un número es perfecto. Utilice una función auxiliar que calcule los divisores propios
+
+'''def perfect(_number):
+    array = []
+    for i in range(1, _number):
+        if _number % i == 0:
+            array.append(i)
+    if sum(array) == _number:
+        return True
+    else:
+        return False'''
+
+
+#Version 2.0 'Decoradores'
+'''def perfect_dec(number):
+    def aux(_number):
+        array = []
+        for i in range(1, _number):
+            if _number % i == 0:
+                array.append(i)
+        if sum(array) == _number:
+            result = True
+        else:
+            result = False
+        return result
+    return aux
+
+
+@perfect_dec
+def perfect_num(num):
+    return num'''
+
+
+
+#4. Escriba una función en Python que determine si una cadena de texto es un palíndromo.  'ligar es ser agil'
+
+'''def palin(text):
+    noTab_text = text.replace(' ', '')
+    reversed_noTab_text = list(noTab_text[::-1])
+    new_noTab_text = ''.join(reversed_noTab_text)
+    
+    if noTab_text == new_noTab_text:
+        return True 
+    else: return False
+
+text = input('Escriba un string, el programa determinara si se trata de un \'palindromo\'.')
+if palin(text) == True:
+    print('It is palidrome.')
+else:
+    print('It is not a palindrome.')'''
+
+#5. Escriba una función en Python que determine si una cadena de texto es un pangrama
+
+'''def pangrama(text):
+    alpha = list(ascii_lowercase)
+    for letter in alpha:
+        if letter not in text:
+            return False
+        
+    return True
+            
+text = input('Escriba un string, el programa determinara si se se trata de un pangrama. ')
+if pangrama(text) == True:
+    print('It is a pangrame.')
+else:
+    print('It is not a pangrame.')'''
+
+
+
+
+#PROGRAMACION ORIENTADA A OBJETOS PAG 228.
+
+#Añadiendo métodos
+#Un método es una función que forma parte de una clase o de un objeto. En su ámbito tiene acceso a otros métodos y atributos de la clase o del objeto
+#al que pertenece. La definición de un método (de instancia) es análoga a la de una función ordinaria, pero incorporando un primer parámetro self que
+#hace referencia a la instancia actual del objeto. Una de las acciones más sencillas que se pueden hacer sobre un droide es encenderlo o
+#apagarlo. Vamos a implementar estos dos métodos en nuestra clase:
+
+
+'''class Droid:
+    def switch_on(self):
+        print("Hi!, I'm a Droid. How can I help you")
+    def switch_off(self):
+        print("Bye!. I'm going to sleep")'''
+
+
+#Inicialización
+#Existe un método especial que se ejecuta cuando creamos una instancia de un objeto. Este método es __init__ y nos permite asignar atributos y
+#realizar operaciones con el objeto en el momento de su creación. También es ampliamente conocido como el constructor.
+
+
+
+'''class Droid:
+    def __init__(self, name):
+        self.name = name
+droid = Droid("R2D2")'''
+
+
+#Dominando clases, objetos y atributos 1
+
+'''class Person:
+    pass
+victor = Person()
+ana = Person()
+
+#objeto.atributo = valor
+
+victor.weight = 75
+victor.age = 23
+victor.height = 1.72
+
+ana.weight = 75
+ana.age = 19
+ana.height = 1.57
+
+print(victor.weight, victor.age, victor.height)
+print(ana.age, ana.weight, ana.height)'''
+
+
+#Ejercicio pag 234
+
+'''class MobilePhone:
+    pass
+    apps = ['meta', 'uber', 'navigator', 'camera app', 'calculator', 'calls', 'sms', 'configuration', 'photo editor']
+    on = 1
+    off = 0
+
+    def __init__(self, manufacturer, screen_size, num_cores):
+        self.manufacturer = manufacturer
+        self.screen_size = screen_size
+        self.num_cores = num_cores
+        
+    def power_on(self):
+        def ret():
+            print('{} ¡Hola Alex! :)'.format(self.on))
+        print('{} Encendiendo dispositivo...'.format(self.off)) 
+        t = threading.Timer(2.5, ret)
+        t.start()
+        pass
+      
+
+    def power_off(self):
+        return '{} ¡ADIOS!...'.format(self.off)
+
+    def install_app(self, app):
+        get_install = input('Se instalara \'{}\' del dispositivo, ¿deseas continuar? (Escriba si/no): '.format(app))
+        if get_install == 'si':
+            return '{} se ha instalado correctamente.'.format(app)
+        else:
+            print(':)')
+            
+
+    def uninstall_app(self, app):
+        get_uninstall = input('Se desinstalara \'{}\' del dispositivo, ¿deseas continuar? (Escriba si/no): '.format(app))
+        if get_uninstall == 'si':
+            return '{} se ha desinstalado correctamente.'.format(app)
+        else:
+            print(':)')
+
+
+S20_plus = MobilePhone('Samsung', 6.5, 8)
+print(S20_plus.manufacturer)'''
+
+
+
+#ATRIBUTOS
+#Acceso directo, modificar un atributo que se ha creado en el constructor de la clase.
+
+'''class Droid:
+    def __init__(self, name):
+        self.name = name
+
+droid = Droid('C-3PO')
+print(droid.name)
+droid.name = 'oni-chan'
+print(droid.name)'''
+
+
+#Ocultando atributos
+
+'''class Droid:
+    def __init__(self, name):
+        self.__name = name    #Ocultamos el nombre anteponiendo '__' al nombre del atributo
+
+droid = Droid('R2-D2')
+print(droid.__name)      #Droid no tiene un atributo '__name'
+print(droid._Droid__name)''' #Yes
+
+
+#Atributos de clase
+'''class Droid:
+    obeys_owner = True
+
+good_droid = Droid()
+print(good_droid.obeys_owner)
+
+t800 = Droid()
+print(t800.obeys_owner)                #Ambos objetos pertenecen a la clase Droid(), por lo tanto heredan el atributo 'obeys_owner'.
+print(Droid.obeys_owner = 'tt'  '''           #El cambio no afecta a nivel de clase.
+
+      
+
+#Herencia
+
+'''class DBZ:
+    pass
+    def __init__(self, name: str, age: int, template: str):
+        self.name = name
+        self.age = age
+        self.template = template
+
+    def power_level(self, power: float):
+        return '{} has a power level of {}'.format(self.name, power)
+
+class SuperSaiyans(DBZ):
+    def kind(self, name: str):
+        return '{} is one of the most powerful saiyans, with a {} template'.format(name, self.template)
+
+class Humans(DBZ):
+    def powers(self, power_lev: float, height: float):
+        return '{} has a power level of {} and {} meters tall'.format(self.name, power_lev, height)
+
+caracter = Humans('Gohan', 45, 'funny')
+print(caracter.powers(3000000, 1.85))'''
+
+
+#EJERCICIO PAG 244
+#Defina una clase Fraction que represente una fracción con numerador y denominador enteros y utilice los métodos mágicos para poder sumar, restar,
+#multiplicar y dividir estas fracciones. Además de esto, necesitaremos:
+#• gcd(a, b) como método estático siguiendo el algoritmo de Euclides para calcular el máximo común divisor entre a y b.
+#• __init__(self, num, den) para construir una fracción (incluyendo simplificación de sus términos mediante el método gcd().
+#• __str__(self) para representar una fracción.
+
+#Compruebe que se cumplen las siguientes igualdades:
+#[︂25/30+40/45=31/18]︂ [︂25/30−40/45=−1/18 ]︂ [︂25/30*40/45=20/27]︂ [︂25/30/40/45=15/16]
+
+'''class Fraction:           #Creamos la clase 'Fraction:' 
+    pass
+
+    #Creamos un metodo estatico (@) que obtendra el MCD de dos numeros en sus parametros. 
+    @staticmethod    
+    def gcd(a: int, b: int): 
+        while b != 0:        
+            a, b = b, a % b   #Algoritmo de Euclides
+        return a
+
+    #Creamos el 'constructor' con dos parametros, uno para el numerador y otro para el denominador.
+    def __init__(self, num: int, den: int):      
+        gcd = Fraction.gcd(num, den)    #igualamos el llamado a la clase 'gcd()' con los parametros dados a una variable 'gcd'.
+        self.num = num // gcd           #Declaramos de igual manera los parametros en el cuerpo del metodo y los dividimos entre su comun divisor.
+        self.den = den // gcd
+
+    #Creamos un metodo magico '__str__' para darle formato a las fracciones, este metodo lo llama automaticamente el objeto u objetos de la clase.
+    def __str__(self):
+        return f'{self.num}/{self.den}' 
+
+    #Creamos un metodo magico '__add__' que se usara para sumar, este metodo recibe dos parametros, self que interpreta al primer objeto declarado y
+    #toma sus valores, mientras que second interpreta el segundo objeto de la clase y toma sus valores.
+    def __add__(self, second):
+        numerator = self.num * second.den + self.den * second.num     #Algoritmos para obtener una suma de fracciones
+        denominator = self.den * second.den
+        return Fraction(numerator, denominator)                       #regresa las nuevas variables a la clase 'Fraction()', estas van al constructor
+                                                                      #y son tomadas por el metodo magico '__str__' ya con los nombres originales y
+                                                                      #las muestra en el formato final. 
+
+    def __sub__(self, second):
+        numerator = self.num * second.den - self.den * second.num
+        denominator = self.den * second.den
+        return Fraction(numerator, denominator)
+
+    def __mul__(self, second):
+        numerator = self.num * second.num
+        denominator = self.den * second.den
+        return Fraction(numerator, denominator)
+
+    def __truediv__(self, second):
+        numerator = self.num * second.den
+        denominator = self.den * second.num
+        return Fraction(numerator, denominator)
+    
+fraction_0 = Fraction(25, 30)                                    #Declarando el primer objeto.
+fraction_1 = Fraction(40, 45)                                    #Declarando el segundo objeto.
+
+result = fraction_0 / fraction_1                                 #Sumando/restando/dividiendo/multi los objetos de la clase.
+print(result)'''
+        
+       
+
+#Accediendo a la clase base
+#Puede darse la situación en la que tengamos que acceder desde la clase derivada a métodos o atributos de la clase base. Python ofrece super()
+#como mecanismo para ello.
+
+
+'''class Droid:
+    def __init__(self, name: str):
+        self.name = name
+        print(self.name)
+        print(self.name)
+
+class ProtocolDroid(Droid):
+    def __init__(self, name, languages):
+        super().__init__(name)             #Llamada al constructor de la clase
+        self.languages = languages
+
+droid = ProtocolDroid('C3-PO', ['Ewokese', 'Huttese', 'Jawaese'])  
+droid.name
+droid_1 = Droid('R2D2')'''
+
+#Accediendo a la clase base 2.0
+'''class Computer():
+    def __init__(self, computer: str, ram: int, storage: int):
+        self.computer = computer
+        self.ram = ram
+        self.storage = storage
+
+# Class Mobile inherits Computer
+class Mobile(Computer):
+    def __init__(self, computer_ str, ram: int, storage: int, model: str):
+        super().__init__(computer, ram, storage)
+        self.model = model
+
+Apple = Mobile('Apple', 2, 64, 'iPhone X')
+print('The mobile is:', Apple.computer)
+print('The RAM is:', Apple.ram)
+print('The storage is:', Apple.storage)
+print('The model is:', Apple.model)'''
+
+
+#Mixins, accediendo a la clase base etc.
+
+'''class File:
+    def __init__(self, path: str):
+        self.path = path
+    
+    def add_content(self, content: list):
+        return content = len(objeto.info())
+         
+    def size(self):
+        return self.content
+    
+    def info(self):
+        return 'Path: {}'.format(self.path)
+
+class MediaFile(File):
+    def __init__(self, path: str, codec: str, geoloc: tuple, duration: int):
+        super().__init__(path)
+        self.codec = codec
+        self.geoloc = geoloc
+        self.duration = duration
+        
+    def info(self):
+        return super().info() + '\nCodec: {}'.format(self.codec) + '\nGeoloc: {}'.format(str(self.geoloc)) + '\nDuration: {}'.format(str(self.duration))
+
+class VideoFile(MediaFile):
+    def __init__(self, path: str, codec: str, geoloc: tuple, duration: int, dimentions: tuple):
+        super().__init__(path, codec, geoloc, duration)
+        self.dimentions = dimentions
+    def info(self):
+        return super().info() + '\nDimentions: {}'.format(str(self.dimentions))
+
+objeto = VideoFile('/home/python/vanrossum.mp4', 'h264', (23.5454, 31.4343), 487,  (1920, 1080))
+print(objeto.info())'''
+
+
+
+#EJERCICIO DE REPASO PAG 255
+#Declaramos la clase 'DNA' 
+'''class DNA:
+    #Declaramos atributos de clase(bases quimicas)
+    FLAVINE = 'F'        
+    ADENINE = 'A'
+    GUANINE = 'G'
+    CITOSINE = 'C'
+
+    #Declaramos el constructor de la clase
+    def __init__(self, seq: str):
+        self.seq = seq
+
+    #Declaramos un metodo magico que represente nuestro/s objeto/s de clase
+    def __str__(self):
+        return self.seq
+
+    #Declaramos 4 propiedades que muestren el numero de veces que una base se repite en la entrada.
+    @property
+    def flavine(self):
+        return self.seq.count(DNA.FLAVINE) #Al ser atributos de clase los llamamos con la misma clase en vez de self.
+
+    @property
+    def adenine(self):
+        return self.seq.count(DNA.ADENINE)
+
+    @property
+    def guanine(self):
+        return self.seq.count(DNA.GUANINE)
+
+    @property
+    def citosine(self):
+        return self.seq.count(DNA.CITOSINE)
+
+    #Declaramos un metodo magico para sumar, el resultado sera el resultado del max() de cada base frente a otra en su misma posicion.
+    def __add__(self, second): #self interpreta el primer objeto y second el segundo, e ahi que, self.seq y second.seq
+        base_add = ''.join([max(a, b ) for a, b in zip(self.seq, second.seq)]) #Usamos una lista por comprension y la unimos en un str con join()
+        return DNA(base_add)
+
+    #Declaramos un metodo para obtener el porcentaje de veces que una base aparece dentro del str de bases.
+    def appareances(self):
+        total_percent = len(self.seq)
+        flavine = self.flavine / total_percent * 100
+        adenine = self.adenine / total_percent * 100
+        guanine = self.guanine / total_percent * 100
+        citosine = self.citosine / total_percent * 100
+        return 'Flavine: {} \nAdenine: {} \nGuanine: {} \nCitosine: {}'.format(flavine, adenine, guanine, citosine)
+
+    #Declaramos un metodo magico que muestra solo las bases que se repiten en la misma posicion dentro del str.
+    def __mul__(self, second):
+        product = ''.join([a for a, b in zip(self.seq, second.seq) if a == b])
+        return DNA(product)
+
+#Declaramos los objetos de la clase DNA.
+dna_1 = DNA('FCGCCAAAFGFG')
+dna_2 = DNA('CCCACFGGAGCG')
+
+print(f'Flavine {dna_2.flavine}')
+print(f'Adenine {dna_1.adenine}') 
+print(f'Guanine {dna_2.guanine}')
+print(f'Citosine {dna_1.citosine}\n')
+
+dna_sum = dna_1 + dna_2
+print('Maximos dentro las cadenas de bases: {}'.format(dna_sum))
+dna_product = dna_1 * dna_2
+print('Bases repetidas: {}\n'.format(dna_product))
+
+print(dna_2.appareances())'''
+
+    
+
+#Excepciones 
+
+'''def intdiv(a, b):
+    try:
+        return a//b
+    except ZeroDivisionError:
+        print('Don\'t divide by zero...')
+    except TypeError:
+        print('Check operands. Some of them seems strange...')
+    except Exception:
+        print('Something went wrong...')
+intdiv(23, @)'''
+
+#Ejercicio
+'''values = [1, 2 ,3]
+user_index = 2
+
+try:
+    r = values[user_index]
+except IndexError:
+    print('Error: Index not in list')
+else:
+    print(f'Your wishes are my comand = {r}')
+finally:
+    print('¡Have a good day!')'''
+
+
+#Ejercicio
+'''def get_in():
+    while True:
+        try:
+            fake_int = int(input('Escriba algun caracter, si es posible se convertira en un numero entero...'))
+            print('Converting...')
+            break
+        except ValueError:
+            print('Invalid Input. Try entering a valid number... ')
+    return fake_int
+get_in()'''
+
+
+'''def get_in():
+    try:
+        fake_int = int(input('Escriba algun caracter, si es posible se convertira en un numero entero...'))
+        print('Converting...')
+    except ValueError:
+        print('Invalid Iput. Try entering a valid number...')
+        return get_in()
+get_in()'''
