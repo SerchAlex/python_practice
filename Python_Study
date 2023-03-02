@@ -2138,3 +2138,260 @@ get_in()'''
         print('Invalid Iput. Try entering a valid number...')
         return get_in()
 get_in()'''
+
+
+#Crear una clase que represente un número racional con un  numerador y un denominador guardadas en dos variables de tipo entero.
+#Esta clase debe permitir, al menos, sumar, multiplicar y simplificar números racionales. Proporcionar un constructor por 
+#defecto Y 
+#otro constructor que permita indicar los valores del numerador y del denominador. Usando esta clase, crea una calculadora que 
+#permita operar con números racionales, seleccionando las operaciones de un menú 
+
+class RatioNumber:
+    pass
+    def __init__(self, num: int, den: int):
+        mcd = self.mcd_calc(num, den)        #inicializamos el mcd en el constructor
+        self.num = num // mcd
+        self.den = den // mcd
+    
+    #Usamos un dunder method para representar las fracciones.
+    def __str__(self):
+        return f'\nRespuesta: {self.num} / {self.den}'
+    
+    #Calculamos el mcd(minimo comun divisor)    
+    def mcd_calc(self, a, b):
+        while b != 0:
+            a, b = b, a % b
+        return a
+    
+    #Metodo para simplificar fracciones mediante el metodo mcd_calc()
+    def simplify(self):
+        mcd = self.mcd_calc()
+        self.num /= mcd
+        self.den /= mcd
+        return RatioNumber(num, den) #Retorna nuevos valores a la instancia actual
+        
+    def __add__(self, another):
+        numerator = self.num * another.den + self.den * another.num
+        denominator = self.den * another.den
+        return RatioNumber(numerator, denominator)
+    
+    def __sub__(self, another):
+        numerator = self.num * another.den - self.den * another.num
+        denominator = self.den * another.den
+        return RatioNumber(numerator, denominator)
+    
+    def __mul__(self, another):
+        numerator = self.num * another.num
+        denominator = self.den * another.den
+        return RatioNumber(numerator, denominator)
+    
+    def __floordiv__(self, another):
+        numerator = self.num * another.den
+        denominator = self.den * another.num
+        return RatioNumber(numerator, denominator)
+
+        
+#Rational Number Calculator
+
+'''Metodo para pedir las fracciones al usuario'''
+def create_frac():
+    num1 = int(input('Escriba el numerador: '))
+    den1 = int(input('Escriba el denominador: '))
+    return RatioNumber(num1, den1)                  #Retorna la instancia con nuevos valores num 1 y den1
+ 
+'''Metodo principal, muestra las opciones al usuario y crea las diferentes instancias dentro de dichas opciones.'''    
+def main():
+    while True:
+        print('\nBienvenido a la calculadora de fracciones, te muestro las opciones disponibles.')
+        print(' 1. Sumar\n\n 2. Restar\n\n 3. Multiplicar\n\n 4. Dividir\n\n 5. Simplificar')
+        option = int(input('\nSeleccione una opcion: '))
+        
+        if option == 1:
+            frac1 = create_frac()    #Llama al metodo create_frac() que y crea el primer objeto de la clase RatioNumber
+            print('\nFraccion 2.\n')
+            frac2 = create_frac()    #Llama al metodo nuevamente a create_frac() y crea el segundo objeto de la clase RatioNumbe
+            result = frac1 + frac2   #Suma ambas instancias (objetos)
+            print(result,'\n\n')     #Imprime la variable 'result' que es represntada por el metodo __str__ 
+        
+        elif option == 2:
+            frac1 = create_frac()
+            print('\nFraccion 2.\n')
+            frac2 = create_frac()
+            result = frac1 - frac2
+            print(result, '\n\n')
+            
+        elif option == 3:12
+            frac1 = create_frac()
+            print('\nFraccion 2.\n')
+            frac2 = create_frac()
+            result = frac1 * frac2
+            print(result, '\n\n')
+          
+        elif option == 4:
+            frac1 = create_frac()
+            print('\nFraccion 2.\n')
+            frac2 = create_frac()
+            result = frac1 // frac2
+            print(result, '\n\n')
+        
+        elif option == 5:
+            print('Escriba la fracion a simplificar: ')
+            frac1 = create_frac()
+            print(frac1)
+    
+    
+    #Haz una clase llamada Persona con atributos privados: nombre, edad, DNI, sexo (usa una enumeración, ver EnumGuerreros.py para ver un ejemplo), 
+    #peso y altura. Crea métodos (getters y setters) para acceder y modificar todos los atributos.
+    
+import random
+import time
+
+class Persona:
+    def __init__(self, nombre: str = '', edad: int = 0, 
+                 sexo: str = '', peso: int = 2, altura: float = 2, nacionalidad: str = ''):
+        #__ hace privado cualquier atributo
+        self.__nombre = nombre
+        self.__edad = edad
+        self.__nacionalidad = nacionalidad
+        self.__sexo = sexo
+        self.__peso = peso
+        self.__altura = altura
+        self.__generaDNA()
+        
+    def __str__(self):
+        return f'Nombre: {self.__nombre}\nEdad: {self.edad} años\n\
+Sexo: {self.sexo}\nPeso: {self.peso} kilogramos\n\
+Altura: {self.altura} metros\nNacionalidad: {self.nacionalidad}'
+    
+    #SETTERS AND GETTERS
+    
+    #@property = python getter
+    @property
+    def nombre(self):
+        return self.__nombre 
+    #@name_atribute.setter = python setter
+    @nombre.setter
+    def nombre(self, new_value):
+        self.__nombre = new_value
+        
+    @property
+    def edad(self):
+        return self.__edad
+    @edad.setter
+    def edad(self, new_value):
+        self.__edad = new_value
+        
+    @property
+    def DNA(self):
+        return self.__DNA
+    @DNA.setter
+    def DNA(self, new_value):
+        self.__DNA = new_value
+        
+    @property
+    def sexo(self):
+        return self.__sexo
+    @sexo.setter
+    def sexo(self, new_value):
+        self.__sexo = new_value
+        
+    @property
+    def peso(self):
+        return self.__peso
+    @peso.setter
+    def peso(self, new_value):
+        self.__peso = new_value
+        
+    @property
+    def altura(self):
+        return self.__altura
+    @altura.setter
+    def altura(self, new_value):
+        self.__altura = new_value
+        
+    @property 
+    def nacionalidad(self):
+        return self.__nacionalidad
+    @nacionalidad.setter
+    def nacionalidad(self, new_value):
+        self.__nacionalidad = new_value
+        
+    @property
+    def DNA(self):
+        return 'Autogenerated DNA: {}'.format(self.__DNA)
+        
+    #Methods
+    
+    def calcularIMC(self):
+        '''Calcula el indice de masa corporal de la persona'''
+        imc = self.peso / (self.altura) ** 2
+        return imc
+    
+    def valorarPesoCorporal(self):
+        '''Sobrepeso se define como IMC > 25 y se considera esta 
+        debajo del peso ideal si IMC < 18'''
+        if self.calcularIMC() > 18 and self.calcularIMC() < 25:
+            return f'Su peso esta dentro del rango ideal de acuerdo a su IMC (Indice de masa corporal)...0'
+        elif self.calcularIMC() < 18:
+            return f'Su peso esta debajo del rango ideal de acuerdo a su IMC (Indice de masa corporal)...-1'
+        elif self.calcularIMC() > 25:
+            return f'Su peso esta arriba del rango ideal de acuerdo a su IMC (Indice de masa corporal)...1'
+        
+    def esMayorDeEdad(self):
+        if self.edad > 18:
+            return f'Es mayor de edad', True
+        else:
+            return f'Es menor de edad', False
+        
+    def __generaDNA(self):
+        seed = int(time.time())
+        random.seed(seed)
+        self.__DNA = random.randint(10000000, 99999999)
+        return self.__DNA
+
+# Clase ejecutable DatosPersona 
+class DatosPersona(Persona):
+    pass
+    count = 0
+    @staticmethod
+    def data():
+        DatosPersona.count += 1
+        nombre = str(input('Escribe tu nombre: '))
+        edad = int(input('Escribe tu edad: '))
+        sexo = str(input('Escribe tu sexo: '))
+        peso = float(input('Escribe tu peso: '))
+        altura = float(input('Escribe tu altura: '))
+        nacionalidad = str(input('Escribe tu nacionalidad: '))
+        if DatosPersona.count == 1:
+            return Persona(nombre, edad, sexo, peso, altura, nacionalidad)
+        if DatosPersona.count == 2:
+            return Persona(nombre, edad, sexo)
+        if DatosPersona.count == 3:
+            setters = DatosPersona()
+            setters.nombre = (str(input('Escribe tu nombre: ')))
+            setters.edad = (int(input('Escribe tu edad: ')))
+            setters.sexo = (str(input('Escribe tu sexo: ')))
+            setters.peso = (float(input('Escribe tu peso: ')))
+            setters.altura = (float(input('Escribe tu altura: ')))
+            setters.nacionalidad = (str(input('Escribe tu nacionalidad\n')))
+            return Persona(nombre, edad, sexo, peso, altura, nacionalidad)
+        
+    def show_data(self, persona):
+        peso_corp = persona.valorarPesoCorporal()
+        edad_true = persona.esMayorDeEdad()
+        dna = persona.DNA
+        return print(f'{persona}\n{peso_corp}\n{edad_true}\n{dna}\n\n') #'{}\n {}\n {}\n {}'.format(persona, peso_corp, edad_true, dna)
+        
+        
+    @staticmethod
+    def main():
+        persona1 = DatosPersona.data()
+        persona2 = DatosPersona.data()
+        persona3 = DatosPersona.data()
+        
+        DatosPersona_instance = DatosPersona()
+        
+        DatosPersona_instance.show_data(persona1)
+        DatosPersona_instance.show_data(persona2)
+        DatosPersona_instance.show_data(persona3)
+DatosPersona.main()  
